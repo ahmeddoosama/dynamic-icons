@@ -175,7 +175,7 @@ npm run deploy
 
 ### Automatic Deployment
 
-The project uses GitHub Actions to automatically deploy when code is pushed to the main branch. The workflow:
+The project uses GitHub Actions to automatically deploy when code is pushed to the master branch. The workflow:
 1. Builds the project for production
 2. Deploys to the `gh-pages` branch
 3. Makes the site available at the GitHub Pages URL
