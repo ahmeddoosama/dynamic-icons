@@ -6,12 +6,12 @@ echo "🚀 Setting up GitHub Pages for DynamicIcons..."
 # Get the current repository name
 REPO_NAME=$(basename -s .git `git config --get remote.origin.url` 2>/dev/null)
 
-if [ -z "$REPO_NAME" ]; then
+if [ -z "dynamic-icons" ]; then
     echo "❌ Error: Could not determine repository name. Make sure you're in a git repository."
     exit 1
 fi
 
-echo "📦 Repository name: $REPO_NAME"
+echo "📦 Repository name: dynamic-icons"
 
 # Get GitHub username
 GITHUB_USERNAME=$(git config --get remote.origin.url | sed -n 's/.*github\.com[:/]\([^/]*\).*/\1/p')
@@ -25,18 +25,18 @@ echo "👤 GitHub username: $GITHUB_USERNAME"
 
 # Update package.json with correct base-href
 echo "📝 Updating package.json..."
-sed -i.bak "s|--base-href=/dynamic-icons/|--base-href=/$REPO_NAME/|g" package.json
+sed -i.bak "s|--base-href=/dynamic-icons/|--base-href=/dynamic-icons/|g" package.json
 rm package.json.bak
 
 # Update README.md with correct URL
 echo "📝 Updating README.md..."
 sed -i.bak "s|yourusername|$GITHUB_USERNAME|g" README.md
-sed -i.bak "s|dynamic-icons|$REPO_NAME|g" README.md
+sed -i.bak "s|dynamic-icons|dynamic-icons|g" README.md
 rm README.md.bak
 
 # Update GitHub Actions workflow
 echo "📝 Updating GitHub Actions workflow..."
-sed -i.bak "s|dynamic-icons|$REPO_NAME|g" .github/workflows/deploy.yml
+sed -i.bak "s|dynamic-icons|dynamic-icons|g" .github/workflows/deploy.yml
 rm .github/workflows/deploy.yml.bak
 
 echo "✅ Setup complete!"
@@ -57,6 +57,6 @@ echo "   - Go to Settings → Actions → General"
 echo "   - Allow all actions and reusable workflows"
 echo ""
 echo "4. Your site will be available at:"
-echo "   https://$GITHUB_USERNAME.github.io/$REPO_NAME/"
+echo "   https://ahmeddoosama.github.io/dynamic-icons/"
 echo ""
 echo "🎉 Happy coding!"
