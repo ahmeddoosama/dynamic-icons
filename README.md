@@ -2,6 +2,10 @@
 
 This system allows you to dynamically display SVG icons based on keys returned from a backend. All icons are stored in a centralized constants file and can be easily used throughout the application.
 
+**🌐 [Live Demo on GitHub Pages](https://ahmeddoosama.github.io/dynamic-icons/)**
+
+*Explore all available icons with interactive examples and usage patterns.*
+
 ## Features
 
 - **Centralized Icon Storage**: All icons are stored in `icons.constatns.ts`
@@ -156,3 +160,32 @@ See `src/app/shared/dynamic-icons/componants/icon-example/icon-example.component
 **Color not applying?**
 - Verify the `color` input is being passed
 - Check that the SVG uses `currentColor` or `fill="currentColor"`
+
+## GitHub Pages Deployment
+
+This project is automatically deployed to GitHub Pages. The live demo is available at: `https://ahmeddoosama.github.io/dynamic-icons/`
+
+### Manual Deployment
+
+To manually deploy to GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+### Automatic Deployment
+
+The project uses GitHub Actions to automatically deploy when code is pushed to the main branch. The workflow:
+1. Builds the project for production
+2. Deploys to the `gh-pages` branch
+3. Makes the site available at the GitHub Pages URL
+
+### Setup Instructions
+
+For detailed setup instructions, see the `setup-github-pages.sh` script or follow these steps:
+
+1. **Enable GitHub Pages** in your repository settings
+2. **Enable GitHub Actions** to allow automatic deployment
+3. **Push your code** to trigger the first deployment
+
+The live demo showcases all available icons with interactive examples and usage patterns.
