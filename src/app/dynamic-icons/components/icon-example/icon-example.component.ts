@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DynamicIconComponent } from '../dynamic-icon/dynamic-icon.component';
@@ -29,7 +29,7 @@ import { IconService } from '../../services/icon.service';
         </div>
 
         <div class="icon-grid">
-          <div class="icon-item" *ngFor="let iconName of filteredIconNames">
+          <div class="icon-item" *ngFor="let iconName of filteredIconNames" (click)="copyIcon(iconName)">
             <dynamic-icon
               [iconName]="iconName"
               [size]="32"
@@ -67,7 +67,7 @@ import { IconService } from '../../services/icon.service';
       <div class="example-section">
         <h3>Pipe Approach</h3>
         <div class="icon-grid">
-          <div class="icon-item" *ngFor="let iconName of iconNames">
+          <div class="icon-item" *ngFor="let iconName of iconNames" (click)="copyIcon(iconName)">
             <div [innerHTML]="iconName | icon:24"></div>
             <span>{{ iconName }}</span>
           </div>
@@ -78,7 +78,7 @@ import { IconService } from '../../services/icon.service';
       <div class="example-section">
         <h3>Backend Data Example</h3>
         <div class="icon-grid">
-          <div class="icon-item" *ngFor="let item of backendData">
+          <div class="icon-item" *ngFor="let item of backendData" (click)="copyIcon(item.title)">
             <dynamic-icon
               [iconName]="item.iconKey"
               [size]="item.size || 24"
@@ -173,6 +173,9 @@ import { IconService } from '../../services/icon.service';
  * Shows all available icons with search functionality and usage examples
  */
 export class IconExampleComponent implements OnInit {
+
+
+
   /** Array containing all available icon names from the service */
   allIconNames: IconName[] = [];
 
@@ -230,5 +233,9 @@ export class IconExampleComponent implements OnInit {
         String(iconName).toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
+  }
+
+  copyIcon(iconName: any): void {
+    navigator.clipboard.writeText(iconName);
   }
 }
